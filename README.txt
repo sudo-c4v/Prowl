@@ -6,9 +6,7 @@
  			   \ \__\      \ \__\\ _\    \ \_______\   \ \____________\   \ \_______\
 			    \|__|       \|__|\|__|    \|_______|    \|____________|    \|_______|
 
-					     AI chatbot for the UWM Archives
-                  			Matthew Cavenaile (and Claude/ChatGPT/Llama)                               
-                          		       matt.cavenaile@gmail.com                                         
+					     AI chatbot for the UWM Archives                                        
                                                                         
 Purpose & Scope
 ============================================================================================================================
