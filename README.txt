@@ -23,4 +23,3 @@ Prowl should be able to assist patrons in the following ways:
 To-do
 ============================================================================================================================
 + Future functionality - integrate w/ WTMJ collection?
-+ Add text-bubbles to know when the bot is thinking
