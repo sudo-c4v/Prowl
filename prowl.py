@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, session
 from flask_basicauth import BasicAuth
-import chromadb
+from chromadb.api.client import HttpClient
 import html
 import requests
 from chromadb.config import Settings
@@ -48,7 +48,7 @@ CHROMADB_PORT = int(os.getenv("CHROMADB_PORT", "8000"))
 
 # Initialize the HTTP client
 logger.info(f"Connecting to ChromaDB at {CHROMADB_HOST}:{CHROMADB_PORT}")
-client = chromadb.HttpClient(
+client = HttpClient(
     host=CHROMADB_HOST,
     port=CHROMADB_PORT
 )
