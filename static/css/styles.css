@@ -1,0 +1,221 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: white;
+ }
+
+.top-banner {
+    background-color: rgb(255, 189, 0);
+    width: 100%;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+ }
+
+.banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+ }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    }
+
+.logo {
+    height: 40px;
+    margin-right: 0;
+    }
+
+.banner-text {
+    font-weight: bold;
+    font-size: 24px;
+    color: #1a1a1a;
+    }
+
+.main-content {
+    padding: 20px;
+    position: relative;
+	min-height: 500px; /* Add minimum height */
+	max-height: 1000px;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	margin: 80px auto;
+    }
+	
+.message {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    color: #1a1a1a;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    max-width: 70%;
+    word-wrap: break-word;
+    animation: messageAppear 0.3s ease-out;
+    clear: both;
+    }
+
+.user-message {
+    background-color: rgb(255, 189, 0);
+    float: right;
+    margin-left: auto;
+    border-top-right-radius: 5px;
+    }
+
+.bot-message {
+    background-color: #e0e0e0;
+    float: left;
+    margin-right: auto;
+    border-top-left-radius: 5px;
+    }
+
+#chat-container::after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+#chat-container {
+	flex: 1;
+	min-height: 400px; /* Minimum height */
+	max-height: 400px; /* Maximum height based on viewport */
+	overflow-y: auto;
+	height: auto; /* Let it be flexible */
+	position: relative;
+	border: 1px solid #333;
+	padding: 20px;
+	background-color: rgba(45, 45, 45, 0.9);
+	background-attachment: fixed;
+	background-origin: padding-box;
+	background-size: auto 60%;
+	background-position: center top;
+	background-repeat: no-repeat;
+	margin-bottom: 5px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+	position: relative;
+	scrollbar-width: thin; /* For Firefox */
+	scrollbar-color: rgba(255, 189, 0, 0.6) rgba(45, 45, 45, 0.3); /* For Firefox */
+	}
+	
+#chat-container::before {
+	content: '';
+	position: absolute; 
+	top: 0;
+	left: 0;
+	transform: none;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: -1;
+	border-radius: 8px;
+	}
+		
+@media screen and (max-height: 600px) {
+	.main-content {
+		margin-top: 60px; /* Reduce top margin */
+		padding: 10px; /* Reduce padding */
+		}
+    
+		#chat-container, #chat-container::before {
+			height: 400px;
+		}
+	}	
+
+		
+/* Webkit scrollbar styling (Chrome, Safari, Edge) */
+#chat-container::-webkit-scrollbar {
+	width: 8px;
+	}
+
+#chat-container::-webkit-scrollbar-track {
+	background: rgba(45, 45, 45, 0.3);
+	border-radius: 4px;
+	}
+
+#chat-container::-webkit-scrollbar-thumb {
+	background: rgb(255, 189, 0);
+	border-radius: 4px;
+	transition: background 0.3s ease;
+	}
+
+#chat-container::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 189, 0, 0.8);
+	}
+
+@keyframes messageAppear {
+    from {
+    opacity: 0;
+    transform: translateY(10px);
+	}
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
+.appt {
+	width: 760px;
+}
+
+#appt {
+	display: flex;
+	margin-bottom: 0px;
+	position: sticky;
+	bottom: 0;
+	padding: 2px 0;
+}
+
+#input-container {
+    display: flex;
+    gap: 10px;
+	position: sticky;
+	bottom: 0;
+	background-color: #1a1a1a; /* Match your background color */
+	padding: 10px 0;
+    }
+
+#question-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: rgba(45, 45, 45, 0.9);
+    color: white;
+    }
+
+#question-input::placeholder {
+    color: #999;
+    }
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(255, 189, 0);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    }
+	
+button:hover {
+    background-color: rgb(230, 170, 0);
+    }
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    }

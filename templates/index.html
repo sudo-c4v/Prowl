@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prowl - UWM Archives AI Assistant</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">   
+</head>
+<body>
+    <!-- Banner -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/UWM_Logo.png') }}" alt="UWM Logo" class="logo">
+                <span class="banner-text">Archives</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content wrapper -->
+    <div class="main-content">
+        <div id="chat-container"></div>
+		
+		<div id="appt">
+		<!--
+			<form action="https://uwm.edu/libraries/forms/visit-distinctive-collections/" method="get" target="_blank">
+				<button class="appt" type="submit">Schedule an Appointment</button>
+			</form> 
+		-->
+		</div>
+        <div id="input-container">
+            <input type="text" id="question-input" placeholder="Ask a question about the archives...">
+            <button onclick="askQuestion()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function addMessage(message, isUser) {
+            const chatContainer = $('#chat-container');
+            const messageDiv = $('<div>')
+                .addClass('message')
+                .addClass(isUser ? 'user-message' : 'bot-message')
+                .text(message);
+            
+            chatContainer.append(messageDiv);
+            chatContainer.scrollTop(chatContainer[0].scrollHeight);
+        }
+
+        function askQuestion() {
+            const questionInput = $('#question-input');
+            const question = questionInput.val().trim();
+            
+            if (question) {
+                addMessage(question, true);
+                questionInput.val('');
+                
+                $.ajax({
+                    url: '/ask',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: question }),
+                    success: function(response) {
+                        addMessage(response.response, false);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', xhr.responseJSON);
+                        addMessage('Sorry, there was an error processing your question. Please try again.', false);
+                    }
+                });
+            }
+        }
+
+        $('#question-input').keypress(function(e) {
+            if (e.which == 13) {  // Enter key
+                askQuestion();
+            }
+        });
+    </script>
+</body>
+</html>
