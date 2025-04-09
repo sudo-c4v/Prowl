@@ -42,13 +42,16 @@ client = OpenAI(api_key=api_key)
 
 # ------------------------------------------------------ DATABASE SETUP ---------------------------------------------------------------- #
 
-# Set up database path with flexible location for Azure
-DB_DIR = os.getenv("CHROMADB_PATH", "chroma_db")
-DB_PATH = os.path.join(DB_DIR, "chroma.sqlite3")
+# DB Connection
+CHROMADB_HOST = os.getenv("CHROMADB_HOST", "prowlreg.azurecr.io/chromadb-server.io")
+CHROMADB_PORT = int(os.getenv("CHROMADB_PORT", "8000"))
 
-# Make sure the directory exists
-os.makedirs(DB_DIR, exist_ok=True)
-logger.info(f"Using ChromaDB directory: {DB_DIR}")
+# Initialize the HTTP client
+logger.info(f"Connecting to ChromaDB at {CHROMADB_HOST}:{CHROMADB_PORT}")
+client = chromadb.HttpClient(
+    host=CHROMADB_HOST,
+    port=CHROMADB_PORT
+)
 
 # ------------------------------------------------------ RATE LIMITER ---------------------------------------------------------------- #
 
