@@ -43,7 +43,7 @@ client = OpenAI(api_key=api_key)
 # ------------------------------------------------------ DATABASE SETUP ---------------------------------------------------------------- #
 
 # DB Connection
-CHROMADB_HOST = os.getenv("CHROMADB_HOST", "52.189.29.90")
+CHROMADB_HOST = os.getenv("CHROMADB_HOST", "52.182.133.171")
 CHROMADB_PORT = int(os.getenv("CHROMADB_PORT", "8000"))
 
 # Initialize the HTTP client
